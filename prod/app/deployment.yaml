@@ -1,0 +1,19 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: aplicacao
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: aplicacao-pod
+    spec:
+      containers:
+        - name: container-aplicacao-loja
+          image: rafanercessian/aplicacao-loja:v1
+          resources:
+            requests:
+              cpu: 40m
+          ports:
+            - containerPort: 80
