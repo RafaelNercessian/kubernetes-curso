@@ -1,0 +1,16 @@
+apiVersion: autoscaling/v2alpha1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: escalonamento-pod
+spec:
+  scaleTargetRef:
+        apiVersion: apps/v1beta1
+        kind: Deployment
+        name: aplicacao
+  minReplicas: 1
+  maxReplicas: 4
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: 10
