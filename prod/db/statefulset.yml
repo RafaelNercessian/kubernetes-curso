@@ -7,11 +7,11 @@ spec:
   template:
     metadata:
       labels:
-        name: aplicacao-mysql
+        name: mypvc
     spec:
       containers:
         - name: mysql
-          image: mysql:5.7
+          image: mysql:5.5
           ports:
             - containerPort: 3306
           env:
@@ -21,3 +21,10 @@ spec:
             value: "loja"
           - name: MYSQL_USER
             value: "root"
+          volumeMounts:
+          - name: mypvc
+            mountPath: /var/lib/mysql
+      volumes:
+       - name: mypvc
+         persistentVolumeClaim:
+           claimName: mypvc

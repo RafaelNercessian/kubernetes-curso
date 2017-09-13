@@ -6,4 +6,4 @@ spec:
   ports:
     - port: 3306
   selector:
-    name: aplicacao-mysql
+    name: mypvc
